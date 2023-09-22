@@ -585,7 +585,8 @@ all_df_with_average<- all_df_with_average  %>%
 regular_plot<-ggplot(all_df_with_average,aes(x=Chr_position,y=average,fill=Specific_to))+
   theme_classic()+
   geom_col(position = "dodge")+ 
-  scale_fill_manual("legend", values = c("w" = "red", "y" = "blue", "z" = "grey"))
+  scale_fill_manual("legend", values = c("w" = "red", "y" = "blue", "z" = "grey"))+
+  ylim(0,320)
 
 standerdize_plot<-ggplot(all_df_with_average,aes(x=Chr_position,y=standedized_no,fill=Specific_to))+
   theme_classic()+
