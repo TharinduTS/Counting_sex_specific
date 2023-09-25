@@ -510,6 +510,9 @@ library("rstudioapi")
 setwd(dirname(getActiveDocumentContext()$path))
 
 library(ggplot2)
+library(dplyr)
+library(data.table)
+library(zoo)
 
 # Delete previous plot before starting if it is in the same folder*****************
 
@@ -518,7 +521,7 @@ library(ggplot2)
 options(scipen=999)
 
 #******change pop name here and add y,w,z to the begining of corresponding file names
-pop_name<-"Nigeria"
+pop_name<-"Ghana"
 #change window size here 
 win_size<-50
 #change moving win size here 
@@ -555,7 +558,7 @@ all_df_with_average<-setDT(all_df)[, .(
 
 colnames(all_df_with_average)<-c('Specific_to','Chr_position','Number_of_sites','average')
 #*************************
-library(dplyr)
+
 
 max_averages<-all_df_with_average %>% 
   group_by(Specific_to) %>% 
@@ -597,6 +600,7 @@ regular_plot
 ggsave(paste(pop_name,"_regular_plot.pdf",sep = ""),width = 15, height = 10)
 standerdize_plot
 ggsave(paste(pop_name,"_standerdized_plot.pdf",sep = ""),width = 15, height = 10)
+
 
 ```
     
